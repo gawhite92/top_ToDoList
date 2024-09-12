@@ -1,0 +1,184 @@
+/* Main styles */
+
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: system-ui, sans-serif; ; 
+}
+
+body {
+  background-color: grey;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-areas: 'sidebar content';
+  height: 900px;
+  gap: 2px;
+  }
+
+#sidebar {
+  grid-area: sidebar;
+  background-color: azure;
+  padding-top: 8px;
+  padding-left: 12px;
+}
+
+#content {
+  grid-area: content;
+  background-color: azure;
+  padding-top: 30px;
+  padding-left: 20px;
+}
+
+#toDoListHeader {
+  font-size: 2em;
+  padding-left: 17px;
+  padding-bottom: 20px;
+}
+
+#addProjectContainer {
+  margin-top: 5px;
+  padding-left: 20px;
+}
+
+/* Sidebar */
+
+#usercontainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.2em;
+}
+
+#useravatar {
+  background-color: black;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+}
+
+#projectsheader {
+  margin-top: 20px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.projecticon{
+  background-color: rgb(54, 99, 141);
+  height: 20px;
+  width: 20px;
+  border-radius: 50px;
+}
+
+.projectcontainer {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-top: 12px;
+  background-color: rgba(117, 204, 255, 0.11);
+  height: 50px;
+  padding-left: 20px;
+  border-radius: 10px;
+  font-size: 1.2em;
+}
+
+
+/*GROUP CONTENT STYLES*/
+
+.todocontainer,
+#addtodocontainer {
+  border-radius: 20px;
+  padding-left: 20px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+/* To do box styles */
+
+#todogroupcontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.todocontainer {
+  background-color:rgba(205, 231, 255, 0.637);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 98%;
+  font-size: 1.2em;
+}
+
+.todorightcontainer,
+.todoleftcontainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.todorightcontainer {
+  padding-right: 30px;
+}
+
+.todocheckbox {
+  background-color: white;
+  height: 20px;
+  width: 20px;
+  border: solid black 1px;
+}
+
+.edittodobutton,
+.deletetodobutton {
+  background-color: white;
+  height: 20px;
+  width: 20px;
+  border: solid black 1px;
+}
+
+
+/* FORM STYLES */
+
+#addprojectbutton,
+#submitNewProjectButton,
+#addtaskbutton,
+#submitNewTask {
+  cursor:pointer;
+  font-weight: bold;
+  width: 100px;
+}
+
+#submitNewProjectButton {
+  margin-top: 5px;
+}
+
+#taskForm {
+  display: flex;
+  width: 20vw;
+  gap: 5px;
+  align-items: flex-start;
+  padding-left: 20px;
+}
+
+#newProjectForm>input{
+  height:25px;
+  margin-top: 5px;
+}
+
+input#description {
+  height: 6vh;
+}
+
+input#priority,
+input#dueDate {
+  width: 10vw;
+}
+
+#newProjectForm>input{
+  height:25px;
+  margin-top: 5px;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
