@@ -1,6 +1,6 @@
 export {showAddTaskForm}
-import {newTask} from './index.js'
-
+import {newTask } from './index.js'
+import {populateTasks, clearTasks} from './populate.js';
 
 const addTaskButton = document.getElementById("addtaskbutton");
 addTaskButton.addEventListener("click", () => {
@@ -12,7 +12,7 @@ function showAddTaskForm() {
 
     const taskFormContainer = document.getElementById("taskFormContainer");
 
-    if (taskFormContainer.hasChildNodes()) {  //Removes form if already opened
+    if (taskFormContainer.hasChildNodes()) {  //Removes form if already open
         console.log('Removing form')
         while (taskFormContainer.lastElementChild) {
             taskFormContainer.removeChild(taskFormContainer.lastElementChild);
@@ -76,5 +76,7 @@ function showAddTaskForm() {
     submitNewTaskButton.addEventListener("click", () => {
         newTask();
         showAddTaskForm();
+        clearTasks();
+        populateTasks();
 })
 }

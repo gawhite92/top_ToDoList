@@ -6,8 +6,8 @@ const database =
             "title": "Default Project",
             "tasks": [
                 {
-                    "title": "Default Task",
-                    "description": "Please delete this task, it is just to show an example.",
+                    "title": "Buy pants",
+                    "description": "I really need pants.",
                     "dueDate": "14/09/2024",
                     "priority": "Normal",
                     "createdDate": "07/09/2024",
@@ -16,8 +16,18 @@ const database =
                 },
 
                 {
-                    "title": "Shopping",
-                    "description": ["apples", "bananas", "milk", "eggs", "bread"],
+                    "title": "Go for a walk",
+                    "description": "I'm getting fat.",
+                    "dueDate": "15/09/2024",
+                    "priority": "Normal",
+                    "createdDate": "07/09/2024",
+                    "active": true,
+                    "completedDate": null
+                },
+
+                {
+                    "title": "Ride a bike",
+                    "description": "Bikes are cool.",
                     "dueDate": "15/09/2024",
                     "priority": "Normal",
                     "createdDate": "07/09/2024",
@@ -31,8 +41,8 @@ const database =
             "title": "Personal",
             "tasks": [
                 {
-                    "title": "Default Task",
-                    "description": "Please delete this task, it is just to show an example.",
+                    "title": "Listen to music",
+                    "description": "Music is fun.",
                     "dueDate": "14/09/2024",
                     "priority": "Normal",
                     "createdDate": "07/09/2024",
@@ -46,8 +56,8 @@ const database =
             "title": "Work",
             "tasks": [
                 {
-                    "title": "Default Task",
-                    "description": "Please delete this task, it is just to show an example.",
+                    "title": "Deliver report to client",
+                    "description": "Or else client will be angry.",
                     "dueDate": "14/09/2024",
                     "priority": "Normal",
                     "createdDate": "07/09/2024",

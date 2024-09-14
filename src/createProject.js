@@ -1,5 +1,6 @@
 export {showAddProjectForm}
 import {newProject} from './index.js'
+import {populateProjects, clearProjects } from './populate.js';
 
 const addProjectButton = document.getElementById("addprojectbutton");
 addProjectButton.addEventListener("click", () => {
@@ -11,7 +12,7 @@ function showAddProjectForm() {
 
     const projectFormContainer = document.getElementById("projectFormContainer");
 
-    if (projectFormContainer.hasChildNodes()) {  //Removes form if already opened
+    if (projectFormContainer.hasChildNodes()) {  //Removes form if already open
         console.log('Removing project form')
         while (projectFormContainer.lastElementChild) {
             projectFormContainer.removeChild(projectFormContainer.lastElementChild);
@@ -42,5 +43,7 @@ function showAddProjectForm() {
     submitNewProjectButton.addEventListener("click", () => {
         newProject();
         showAddProjectForm();
-    });
+        clearProjects();
+        populateProjects();
+        });
 }

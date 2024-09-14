@@ -3,7 +3,8 @@
 * {
   margin: 0px;
   padding: 0px;
-  font-family: system-ui, sans-serif; ; 
+  font-family: system-ui, sans-serif;
+  ;
 }
 
 body {
@@ -13,7 +14,7 @@ body {
   grid-template-areas: 'sidebar content';
   height: 900px;
   gap: 2px;
-  }
+}
 
 #sidebar {
   grid-area: sidebar;
@@ -62,7 +63,7 @@ body {
   font-weight: bold;
 }
 
-.projecticon{
+.projecticon {
   background-color: rgb(54, 99, 141);
   height: 20px;
   width: 20px;
@@ -81,6 +82,9 @@ body {
   font-size: 1.2em;
 }
 
+.projecttitle {
+  cursor: pointer;
+}
 
 /*GROUP CONTENT STYLES*/
 
@@ -95,6 +99,10 @@ body {
 
 /* To do box styles */
 
+.hidden {
+  visibility: hidden;
+}
+
 #todogroupcontainer {
   display: flex;
   flex-direction: column;
@@ -102,7 +110,7 @@ body {
 }
 
 .todocontainer {
-  background-color:rgba(205, 231, 255, 0.637);
+  background-color: rgba(205, 231, 255, 0.637);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -113,12 +121,13 @@ body {
 .todorightcontainer,
 .todoleftcontainer {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   align-items: center;
 }
 
 .todorightcontainer {
   padding-right: 30px;
+  gap: 20px;
 }
 
 .todocheckbox {
@@ -130,12 +139,22 @@ body {
 
 .edittodobutton,
 .deletetodobutton {
-  background-color: white;
   height: 20px;
   width: 20px;
-  border: solid black 1px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 0px;
+  background-color: transparent;
+  outline: none;
 }
 
+.edittodobutton {
+  background-image: url("./assets/icons/edit-16.ico");
+}
+
+.deletetodobutton {
+  background-image: url(./assets/icons/x-mark-2-16.ico);
+}
 
 /* FORM STYLES */
 
@@ -143,7 +162,7 @@ body {
 #submitNewProjectButton,
 #addtaskbutton,
 #submitNewTask {
-  cursor:pointer;
+  cursor: pointer;
   font-weight: bold;
   width: 100px;
 }
@@ -160,8 +179,8 @@ body {
   padding-left: 20px;
 }
 
-#newProjectForm>input{
-  height:25px;
+#newProjectForm>input {
+  height: 25px;
   margin-top: 5px;
 }
 
@@ -174,11 +193,11 @@ input#dueDate {
   width: 10vw;
 }
 
-#newProjectForm>input{
-  height:25px;
+#newProjectForm>input {
+  height: 25px;
   margin-top: 5px;
 }
 
-button:hover{
-  transform:scale(1.05);
+button:hover {
+  transform: scale(1.05);
 }
