@@ -1,6 +1,6 @@
 export {showAddProjectForm}
-import {newProject} from './index.js'
-import {populateProjects, clearProjects } from './populate.js';
+import {newProject, activateListeners} from './index.js'
+import {populateProjects, clearProjects, highlightSelectedProject} from './populate.js';
 
 const addProjectButton = document.getElementById("addprojectbutton");
 addProjectButton.addEventListener("click", () => {
@@ -45,5 +45,7 @@ function showAddProjectForm() {
         showAddProjectForm();
         clearProjects();
         populateProjects();
+        activateListeners();
+        highlightSelectedProject();
         });
 }

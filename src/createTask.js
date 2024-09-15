@@ -1,5 +1,5 @@
 export {showAddTaskForm}
-import {newTask } from './index.js'
+import {newTask, activateListeners} from './index.js'
 import {populateTasks, clearTasks} from './populate.js';
 
 const addTaskButton = document.getElementById("addtaskbutton");
@@ -78,5 +78,6 @@ function showAddTaskForm() {
         showAddTaskForm();
         clearTasks();
         populateTasks();
+        activateListeners();
 })
 }

@@ -51,9 +51,12 @@ body {
 }
 
 #useravatar {
-  background-color: black;
   height: 50px;
   width: 50px;
+  background-image: url(./assets/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   border-radius: 50px;
 }
 
@@ -65,14 +68,15 @@ body {
 
 .projecticon {
   background-color: rgb(54, 99, 141);
-  height: 20px;
-  width: 20px;
+  height: 10px;
+  width: 10px;
   border-radius: 50px;
 }
 
 .projectcontainer {
   display: flex;
   gap: 15px;
+  justify-content: space-between;
   align-items: center;
   margin-top: 12px;
   background-color: rgba(117, 204, 255, 0.11);
@@ -82,8 +86,54 @@ body {
   font-size: 1.2em;
 }
 
+.projectleftcontainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.projectrightcontainer {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding-right: 20px;
+}
+
 .projecttitle {
   cursor: pointer;
+}
+
+.projectEditButton,
+.projectDeleteButton{
+  width: 20px;
+  height: 20px;
+  outline: none;
+  border: 0px;
+  background-color: transparent;
+}
+
+.projectEditButton{
+  background-image: url(./assets/icons/edit-16.ico);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.projectDeleteButton{
+  background-image: url(./assets/icons/x-mark-2-16.ico);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.projectcontainer.selected {
+  /* background-color: rgba(88, 128, 204, 0.11); */
+  background-color: rgba(255, 0, 0, 0.11);
+}
+
+.editFormTitleInput {
+  position:absolute;
+  left: 50px;
+  width: 10vw;
+  font-size: 1.2em;
 }
 
 /*GROUP CONTENT STYLES*/
@@ -98,6 +148,14 @@ body {
 }
 
 /* To do box styles */
+
+/* #taskDescription {
+  border: solid black 1px;
+  width: 30vw;
+  height: 30vh;
+  position: relative;
+  top: -50px;
+}*/
 
 .hidden {
   visibility: hidden;
@@ -137,6 +195,12 @@ body {
   border: solid black 1px;
 }
 
+.todocheckbox.complete {
+  background-image: url(./assets/icons/check-mark-3-16.ico);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .edittodobutton,
 .deletetodobutton {
   height: 20px;
@@ -147,6 +211,11 @@ body {
   background-color: transparent;
   outline: none;
 }
+
+.todocontainer.complete {
+  text-decoration: line-through; 
+}
+
 
 .edittodobutton {
   background-image: url("./assets/icons/edit-16.ico");

@@ -3,13 +3,13 @@ export { database };
 const database =
     [
         {
-            "title": "Default Project",
+            "title": "Default",
             "tasks": [
                 {
                     "title": "Buy pants",
                     "description": "I really need pants.",
                     "dueDate": "14/09/2024",
-                    "priority": "Normal",
+                    "priority": "Urgent",
                     "createdDate": "07/09/2024",
                     "active": true,
                     "completedDate": null
@@ -19,7 +19,7 @@ const database =
                     "title": "Go for a walk",
                     "description": "I'm getting fat.",
                     "dueDate": "15/09/2024",
-                    "priority": "Normal",
+                    "priority": "High",
                     "createdDate": "07/09/2024",
                     "active": true,
                     "completedDate": null
@@ -59,7 +59,7 @@ const database =
                     "title": "Deliver report to client",
                     "description": "Or else client will be angry.",
                     "dueDate": "14/09/2024",
-                    "priority": "Normal",
+                    "priority": "High",
                     "createdDate": "07/09/2024",
                     "active": true,
                     "completedDate": null

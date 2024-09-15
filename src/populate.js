@@ -1,5 +1,6 @@
-export { populateProjects, populateTasks, clearProjects, clearTasks }
+export { populateProjects, populateTasks, clearProjects, clearTasks, highlightSelectedProject }
 import { database } from "./testdata.js"
+import { getSelectedProject, activateListeners } from "./index.js";
 
 
 function populateProjects() {
@@ -10,6 +11,9 @@ function populateProjects() {
         const projectContainer = document.createElement("div");
         projectContainer.setAttribute("class", "projectcontainer");
 
+        const projectLeftContainer = document.createElement("div");
+        projectLeftContainer.setAttribute("class", "projectleftcontainer");
+        
         const projectIcon = document.createElement("div");
         projectIcon.setAttribute("class", "projecticon");
 
@@ -17,22 +21,35 @@ function populateProjects() {
         projectTitle.setAttribute("class", "projecttitle");
         projectTitle.innerText = database[i].title;
 
+        const projectRightContainer = document.createElement("div");
+        projectRightContainer.setAttribute("class", "projectrightcontainer");
+
+        const editProjectButton = document.createElement("button");
+        editProjectButton.setAttribute("class", "projectEditButton");
+
+        const deleteProjectButton = document.createElement("button");
+        deleteProjectButton.setAttribute("class", "projectDeleteButton");
+
         projectsList.appendChild(projectContainer);
-        projectContainer.appendChild(projectIcon);
-        projectContainer.appendChild(projectTitle);
+        projectContainer.appendChild(projectLeftContainer);
+        projectLeftContainer.appendChild(projectIcon);
+        projectLeftContainer.appendChild(projectTitle);
+        projectContainer.appendChild(projectRightContainer);
+        projectRightContainer.appendChild(editProjectButton);
+        projectRightContainer.appendChild(deleteProjectButton);
 
-        const projects = document.querySelectorAll(".projecttitle");
+    }
+}
 
-        projects.forEach((project) => {
-            project.addEventListener("click", () => {
-                const selectedProjectTitle = project.innerText
-                console.log(selectedProjectTitle);
-                const selectedProject = database.findIndex(project => project.title == selectedProjectTitle);
-                console.log(selectedProject);
-                clearTasks();
-                populateTasks(selectedProject);
-            })
-        });
+function highlightSelectedProject() {
+    const toDoListHeader = document.getElementById("toDoListHeader");
+    const selectedProjectTitle = toDoListHeader.innerText;
+    const projects = document.querySelectorAll(".projecttitle");
+
+    for (let i = 0; i < projects.length; i++) {
+        if (projects[i].innerText == selectedProjectTitle) {
+            projects[i].parentElement.parentElement.setAttribute("class", "projectcontainer selected");
+        }
     }
 }
 
@@ -44,11 +61,9 @@ function populateTasks(activeProjectIndex) {
         activeProjectIndex = selectedProject
     }
 
-    console.log(`Populating project ${activeProjectIndex} list.`);
     const toDoGroupContainer = document.getElementById("todogroupcontainer");
 
     let activeProjectTasks = database[activeProjectIndex].tasks
-    console.log(`There is ${activeProjectTasks.length} tasks in this project.`);
 
     for (let i = 0; i < activeProjectTasks.length; i++) {
         const toDoContainer = document.createElement("div");
@@ -63,6 +78,7 @@ function populateTasks(activeProjectIndex) {
         const title = document.createElement("div");
         title.setAttribute("class", "title");
         title.innerText = activeProjectTasks[i].title;
+        title.setAttribute("title", activeProjectTasks[i].description)
 
         const toDoRightContainer = document.createElement("div");
         toDoRightContainer.setAttribute("class", "todorightcontainer");
@@ -81,6 +97,11 @@ function populateTasks(activeProjectIndex) {
         const deleteToDoButton = document.createElement("button");
         deleteToDoButton.setAttribute("class", "deletetodobutton");
 
+        if (activeProjectTasks[i].active == false) {
+            toDoContainer.setAttribute("class", "todocontainer complete");
+            toDoCheckbox.setAttribute("class", "todocheckbox complete");
+        }
+
         toDoGroupContainer.appendChild(toDoContainer);
 
         toDoContainer.appendChild(toDoLeftContainer);
@@ -94,13 +115,14 @@ function populateTasks(activeProjectIndex) {
         toDoRightContainer.appendChild(deleteToDoButton);
     }
 
+    const addTaskButton = document.getElementById("addtaskbutton");
+    addTaskButton.removeAttribute("class", "hidden");
 
-const addTaskButton = document.getElementById("addtaskbutton");
-addTaskButton.removeAttribute("class", "hidden");
-
-const toDoListHeader = document.getElementById("toDoListHeader");
-toDoListHeader.innerText = database[activeProjectIndex].title;
+    const toDoListHeader = document.getElementById("toDoListHeader");
+    toDoListHeader.innerText = database[activeProjectIndex].title;
 }
+
+////////////////////////////////////////////////////////////////////////
 
 function clearTasks() {
     const toDoGroupContainer = document.getElementById("todogroupcontainer");
