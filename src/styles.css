@@ -129,11 +129,11 @@ body {
   background-color: rgba(255, 0, 0, 0.11);
 }
 
-.editFormTitleInput {
+#editFormTitleInput {
   position:absolute;
   left: 50px;
-  width: 10vw;
-  font-size: 1.2em;
+  width: 9vw;
+  font-size: 1.1em;
 }
 
 /*GROUP CONTENT STYLES*/
@@ -269,4 +269,13 @@ input#dueDate {
 
 button:hover {
   transform: scale(1.05);
+}
+
+#taskEditForm {
+  display: flex;
+  position: absolute;
+  align-content: center;
+  left: 24vw;
+  font-size: 1.1em;
+  gap: 5px;
 }
