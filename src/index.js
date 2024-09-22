@@ -4,9 +4,12 @@ import { format } from 'date-fns'
 import { showAddTaskForm } from "./createTask.js"
 import { showAddProjectForm } from "./createProject.js"
 import { populateProjects, populateTasks, clearProjects, clearTasks, highlightSelectedProject } from "./populate.js"
-import { database } from "./testdata.js"
 
-export { newProject, newTask, populateProjects, populateTasks, getSelectedProject, activateListeners }
+export { newProject, newTask, populateProjects, populateTasks, getSelectedProject, activateListeners, database }
+
+let defaultDatabase=[];
+let database = localStorage.getItem("database");
+    database = JSON.parse(database || JSON.stringify(defaultDatabase));
 
 // PROJECT CONSTRUCTOR
 
@@ -25,10 +28,13 @@ function newProject() {
 
     const newProject = new Project(title.value); // uses constructor to create project
     database.push(newProject); // adds new project to database
+    localStorage.setItem("database", JSON.stringify(database));
     console.table(database);
+    console.table(localStorage);
 }
 
 // TASK CONSTRUCTOR
+
 
 function Task(title, description, priority, dueDate) {
     this.title = title,
@@ -69,9 +75,12 @@ function newTask() {
         console.log('No project selected.')
         return
     }
-
     database[selectedProject].tasks.push(newTask); // adds new task to database
-    console.table(database);
+    saveLocalStorage();
+}
+
+function saveLocalStorage() {
+    localStorage.setItem("database", JSON.stringify(database));
 }
 
 // SELECTED PROJECT
@@ -123,6 +132,7 @@ function activateListeners() {
             console.log(getSelectedProject().selectedProject)
             const selectedProject = database[getSelectedProject().selectedProject]
             selectedProject.tasks.splice(i, 1);
+            saveLocalStorage();
             clearTasks();
             populateTasks(getSelectedProject().selectedProject);
             activateListeners();
@@ -137,6 +147,7 @@ function activateListeners() {
         projectDeleteButtons[i].addEventListener("click", () => {
             // if(confirm('Delete project?')){ //GIVE WARNING BEFORE PERMANENTLY DELETING
             database.splice(i, 1);
+            saveLocalStorage();
             clearTasks();
             clearProjects();
             populateProjects();
@@ -163,6 +174,7 @@ function activateListeners() {
 
                 database[i].title = child.value;
                 child.remove();
+                saveLocalStorage();
                 clearProjects();
                 populateProjects();
                 activateListeners();
@@ -274,7 +286,7 @@ function activateListeners() {
                 selectedTask.priority = prioritySelector.value;
                 selectedTask.dueDate = formattedDueDate;
 
-
+                saveLocalStorage();
                 clearTasks();
                 populateTasks();
                 activateListeners();
@@ -304,7 +316,7 @@ function activateListeners() {
                 selectedTask.setAttribute("class", "todocheckbox");
                 selectedTask.parentElement.parentElement.setAttribute("class", "todocontainer")
             }
-
+            saveLocalStorage();
             // clearTasks();
             // populateTasks(getSelectedProject().selectedProject);
             // activateListeners();

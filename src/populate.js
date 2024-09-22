@@ -1,5 +1,5 @@
 export { populateProjects, populateTasks, clearProjects, clearTasks, highlightSelectedProject }
-import { database } from "./testdata.js"
+import { database } from "./index.js"
 import { getSelectedProject, activateListeners } from "./index.js";
 
 
